@@ -60,6 +60,11 @@
     margin:12px 0;padding:13px 14px;border-left:4px solid var(--blue);background:#0b1728;
     border-radius:0 12px 12px 0;font-size:18px;line-height:1.35;font-weight:720
   }
+  .layerframe{margin:14px 0;padding:14px;background:var(--card2);border:1px solid var(--line);border-radius:14px}
+  .layerintro{font-size:17px;line-height:1.42;margin:10px 0 12px}
+  .layerrow{display:grid;grid-template-columns:86px 1fr;gap:9px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.32}
+  .layerrow strong{color:var(--cyan);font-size:12px;letter-spacing:.02em}
+  .layerrow span b{color:var(--text)}
   .quote.amber{border-color:var(--amber)}
   .quote.green{border-color:var(--green)}
   .question{
@@ -164,12 +169,19 @@
     <div class="lead">“I don't want this to become the usual AI panel where we catalogue risks, agree governance matters, and go home.”</div>
     <p>AI creates real risks. But moving too slowly creates risks too.</p>
     <p>Tonight I'd like us to separate <b>what has happened from what we predict</b>, compare AI with the processes it actually replaces, and make the trade-offs explicit.</p>
+    <div class="layerframe">
+      <div class="eyebrow">Opening frame · Three layers of AI governance</div>
+      <p class="layerintro">“When we talk about AI governance, I find it useful to split it into three layers: <b>what we control</b>, inside our own companies; <b>what we co-shape</b>, across our customers, partners, suppliers and industries; and <b>what we comply with</b>, the legal and regulatory frameworks established by governments. They are different conversations and different levers. So, as we discuss the governance, risk and power of AI, let's be clear about which layer we're in and who has decision rights.”</p>
+      <div class="layerrow"><strong>CONTROL</strong><span><b>Corporate:</b> internal policies, accountability, risk and controls.</span></div>
+      <div class="layerrow"><strong>CO-SHAPE</strong><span><b>Market:</b> contracts, customer expectations, industry standards and partners.</span></div>
+      <div class="layerrow"><strong>COMPLY</strong><span><b>Public:</b> legislation, regulation and government oversight.</span></div>
+    </div>
     <div class="quote">“If everyone agrees for the next 45 minutes, I'll consider that a moderation failure.”</div>
   </div>
 
   <div class="card" style="margin-top:10px">
     <div class="eyebrow">Run of show</div>
-    <div class="runrow"><div class="time">0–3</div><div class="what"><b>Open</b> — set tension, permission to disagree</div></div>
+    <div class="runrow"><div class="time">0–3</div><div class="what"><b>Open</b> — three governance layers, set tension, permission to disagree</div></div>
     <div class="runrow"><div class="time">3–25</div><div class="what"><b>Core</b> — jobs, opportunity, oversight, accountability</div></div>
     <div class="runrow"><div class="time">25–34</div><div class="what"><b>Sovereignty</b> — residency, control, jurisdiction, resilience</div></div>
     <div class="runrow"><div class="time">34–39</div><div class="what"><b>Rapid fire</b> — yes/no first</div></div>
