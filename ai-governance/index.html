@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b1220">
+<title>AI Governance Panel — Moderator Console</title>
+<style>
+  :root{
+    --bg:#08111f; --card:#101b2d; --card2:#14233a; --text:#f6f8fb; --muted:#a8b4c7;
+    --line:#243652; --blue:#5ab0ff; --cyan:#71e3ff; --amber:#ffd166; --red:#ff8c8c;
+    --green:#7fe0a4; --pad:18px; --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--bg)}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%;
+    padding-bottom:calc(94px + env(safe-area-inset-bottom));
+  }
+  a{color:var(--cyan)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px}
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(8,17,31,.94);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:calc(8px + env(safe-area-inset-top)) 14px 10px;
+  }
+  .headrow{max-width:760px;margin:auto;display:flex;gap:12px;align-items:center}
+  .brand{flex:1;min-width:0}
+  .eyebrow{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);font-weight:800}
+  h1{font-size:18px;line-height:1.1;margin:2px 0 0}
+  .phasebox{
+    min-width:118px;text-align:right;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;padding:8px 10px
+  }
+  #clock{font-variant-numeric:tabular-nums;font-weight:850;font-size:21px}
+  #phase{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:750;letter-spacing:.04em}
+  .timercontrols{max-width:760px;margin:7px auto 0;display:flex;gap:6px}
+  button{
+    appearance:none;border:1px solid var(--line);background:var(--card2);color:var(--text);
+    border-radius:12px;padding:8px 10px;font-weight:750;font-size:12px
+  }
+  button.primary{background:#123d67;border-color:#246aa4}
+  button.warn{background:#473819;border-color:#755d2a;color:#ffe6a5}
+  main{padding-top:14px}
+  section{scroll-margin-top:118px;margin:0 0 18px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:var(--pad);box-shadow:0 7px 25px rgba(0,0,0,.16)
+  }
+  .hero{background:linear-gradient(160deg,#122846,#101b2d 55%)}
+  h2{margin:0 0 10px;font-size:23px;letter-spacing:-.02em}
+  h3{margin:20px 0 8px;font-size:16px;color:var(--blue)}
+  p{font-size:16px;line-height:1.45;margin:9px 0}
+  .lead{font-size:20px;line-height:1.35;font-weight:760}
+  .quote{
+    margin:12px 0;padding:13px 14px;border-left:4px solid var(--blue);background:#0b1728;
+    border-radius:0 12px 12px 0;font-size:18px;line-height:1.35;font-weight:720
+  }
+  .quote.amber{border-color:var(--amber)}
+  .quote.green{border-color:var(--green)}
+  .question{
+    padding:12px 0;border-top:1px solid var(--line);font-size:17px;line-height:1.35;font-weight:680
+  }
+  .question:first-of-type{border-top:none}
+  .num{color:var(--cyan);font-size:12px;font-weight:850;margin-right:6px}
+  .press{
+    background:#0b1728;border-radius:14px;padding:12px 13px;margin-top:12px;
+    border:1px solid #203552
+  }
+  .press b{color:var(--amber);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .press div{font-size:15px;line-height:1.38;margin-top:5px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:780;font-size:16px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";float:right;color:var(--blue);font-size:20px;line-height:16px}
+  details[open] summary:after{content:"–"}
+  .inside{padding:0 16px 16px;border-top:1px solid var(--line)}
+  .factgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .fact{
+    background:var(--card2);border-radius:14px;padding:12px;min-height:112px;border:1px solid #263c5e
+  }
+  .fact .big{font-size:26px;font-weight:900;color:var(--cyan);letter-spacing:-.03em}
+  .fact .label{font-size:13px;line-height:1.3;margin-top:4px}
+  .fact .src{font-size:10px;line-height:1.3;color:var(--muted);margin-top:8px}
+  .source{font-size:11px;color:var(--muted);line-height:1.35;margin-top:6px}
+  .rehearse{
+    background:linear-gradient(150deg,#12213a,#0d1727);border:1px solid #274367;
+    border-radius:16px;padding:15px;margin:10px 0
+  }
+  .rehearse .line{font-size:19px;line-height:1.32;font-weight:790;letter-spacing:-.01em}
+  .rehearse .cue{font-size:11px;line-height:1.4;color:var(--muted);margin-top:9px}
+  .rapid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .rapid div{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px;font-weight:700}
+  .runrow{display:grid;grid-template-columns:58px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+  .runrow:first-child{border-top:0}
+  .runrow .time{font-weight:850;color:var(--cyan)}
+  .runrow .what{font-size:14px}
+  .tiny{font-size:11px;color:var(--muted)}
+  .bottomnav{
+    position:fixed;z-index:30;left:0;right:0;bottom:0;
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+    background:rgba(8,17,31,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line)
+  }
+  .bottomnav .navinner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .bottomnav a{
+    color:var(--muted);text-decoration:none;text-align:center;font-size:10px;font-weight:760;
+    border-radius:10px;padding:8px 2px;background:var(--card)
+  }
+  .bottomnav a strong{display:block;color:var(--text);font-size:15px;margin-bottom:1px}
+  .toplink{float:right;font-size:11px;text-decoration:none;color:var(--muted)}
+  .alert{
+    border:1px solid #715a28;background:#302812;color:#ffe6a5;border-radius:14px;padding:12px;
+    font-size:14px;line-height:1.38
+  }
+  @media (max-width:380px){
+    .factgrid{grid-template-columns:1fr}
+    .lead{font-size:18px}.quote{font-size:17px}
+    .phasebox{min-width:106px}
+  }
+</style>
+</head>
+<body>
+<header id="top">
+  <div class="headrow">
+    <div class="brand">
+      <div class="eyebrow">Moderator console</div>
+      <h1>Power, Risk & AI Governance</h1>
+    </div>
+    <div class="phasebox">
+      <div id="clock">45:00</div>
+      <div id="phase">Ready</div>
+    </div>
+  </div>
+  <div class="timercontrols">
+    <button class="primary" id="startBtn">Start / Pause</button>
+    <button id="resetBtn">Reset 45</button>
+    <button class="warn" id="qaBtn">Q&amp;A 15</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="open">
+  <div class="card hero">
+    <div class="eyebrow">Opening setup</div>
+    <div class="lead">“I don't want this to become the usual AI panel where we catalogue risks, agree governance matters, and go home.”</div>
+    <p>AI creates real risks. But moving too slowly creates risks too.</p>
+    <p>Tonight I'd like us to separate <b>what has happened from what we predict</b>, compare AI with the processes it actually replaces, and make the trade-offs explicit.</p>
+    <div class="quote">“If everyone agrees for the next 45 minutes, I'll consider that a moderation failure.”</div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="eyebrow">Run of show</div>
+    <div class="runrow"><div class="time">0–3</div><div class="what"><b>Open</b> — set tension, permission to disagree</div></div>
+    <div class="runrow"><div class="time">3–25</div><div class="what"><b>Core</b> — jobs, opportunity, oversight, accountability</div></div>
+    <div class="runrow"><div class="time">25–34</div><div class="what"><b>Sovereignty</b> — residency, control, jurisdiction, resilience</div></div>
+    <div class="runrow"><div class="time">34–39</div><div class="what"><b>Rapid fire</b> — yes/no first</div></div>
+    <div class="runrow"><div class="time">39–43</div><div class="what"><b>Wildcard</b> — conventional wisdom that's wrong</div></div>
+    <div class="runrow"><div class="time">43–45</div><div class="what"><b>Close</b> — too much autonomy vs too slow</div></div>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="card">
+    <a class="toplink" href="#top">top ↑</a>
+    <div class="eyebrow">Theme 1</div>
+    <h2>Jobs, productivity &amp; opportunity</h2>
+
+    <div class="question"><span class="num">1</span> Is AI ultimately a <b>headwind or a tailwind</b> for the Cayman economy?</div>
+    <div class="question"><span class="num">2</span> If a company can produce the same output with 80 people instead of 100, is that necessarily bad for the economy?</div>
+    <div class="question"><span class="num">3</span> Are we counting jobs disappearing inside existing firms while ignoring businesses that AI makes possible?</div>
+    <div class="question"><span class="num">4</span> Is the more immediate problem mass unemployment, or the <b>first five years of the career ladder</b>?</div>
+    <div class="question"><span class="num">5</span> Cayman imports substantial labour to support growth. Does labour-saving technology have a different effect here?</div>
+    <div class="question"><span class="num">6</span> If AI lowers the minimum viable size of a company, should <b>time to first dollar</b> become part of AI policy?</div>
+
+    <div class="press"><b>Press</b>
+      <div>“Fewer employees per firm, or fewer jobs in the economy? Those aren't the same claim.”</div>
+      <div>“What net employment series are you relying on?”</div>
+      <div>“Is that already happening, or are we predicting it?”</div>
+    </div>
+  </div>
+
+  <details open>
+    <summary>Human oversight &amp; accountability</summary>
+    <div class="inside">
+      <div class="question"><span class="num">7</span> If AI makes fewer errors than the human process it replaces, but can't explain every decision, which should we trust?</div>
+      <div class="question"><span class="num">8</span> Is “human in the loop” always good governance, or can it become liability theatre?</div>
+      <div class="question"><span class="num">9</span> What does meaningful oversight mean: reading every output, sampling, contestability, or the ability to stop and reverse an action?</div>
+      <div class="question"><span class="num">10</span> An autonomous agent causes a $20m loss. Who owns the outcome: provider, deployer, executive, operator?</div>
+      <div class="press"><b>Press</b>
+        <div>“Which control failed at each layer?”</div>
+        <div>“Could the human realistically have prevented this?”</div>
+        <div>“Are we comparing AI with perfection, or today's human process?”</div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Agents, incidents &amp; scary headlines</summary>
+    <div class="inside">
+      <div class="question"><span class="num">11</span> When an agent finds an unintended route to its objective, is that dangerous autonomous intent — or a permissions and containment failure?</div>
+      <div class="question"><span class="num">12</span> Australia's Medicare incident involved unauthorized access. What governance control should actually have prevented it?</div>
+      <div class="question"><span class="num">13</span> How much of an “AI escape” story is really <b>excessive agency</b>: software with tools, an objective and insufficient constraints?</div>
+      <div class="press"><b>Press</b><div>“Name the failure: model behaviour, permissions, sandboxing, target security, monitoring or incident response?”</div></div>
+    </div>
+  </details>
+
+  <details id="sovereignty">
+    <summary>Data &amp; AI sovereignty</summary>
+    <div class="inside">
+      <div class="alert"><b>RESIDENCY ≠ JURISDICTION ≠ ACCESS ≠ KEYS ≠ RESILIENCE</b></div>
+      <div class="question"><span class="num">14</span> If data leaves Cayman, have we lost sovereignty? Is that actually what Cayman law says?</div>
+      <div class="question"><span class="num">15</span> Which is more sovereign: a server in George Town an administrator can copy from, or encrypted cloud data where the customer controls identity, authorization and keys?</div>
+      <div class="question"><span class="num">16</span> If I can keep the encryption root outside the cloud provider entirely, does physical disk location become less important?</div>
+      <div class="question"><span class="num">17</span> Could requiring every copy to stay on-island create a resilience problem in the name of sovereignty?</div>
+      <div class="question"><span class="num">18</span> AWS warns its strongest external-key control is wrong for most workloads because availability/performance risk can exceed the security benefit. Isn't that what risk-based governance looks like?</div>
+      <div class="press"><b>Press</b>
+        <div>“What specific sovereignty property are we trying to achieve?”</div>
+        <div>“Is the threat jurisdiction, provider access, data loss, model training, or availability?”</div>
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="margin-top:10px">
+    <div class="eyebrow">Rapid fire</div>
+    <h2>Yes / no first</h2>
+    <div class="rapid">
+      <div>AI writes production code</div><div>AI approves a bank loan</div>
+      <div>AI rejects a candidate</div><div>AI signs a contract</div>
+      <div>AI executes a securities trade</div><div>AI diagnoses a patient</div>
+      <div>AI fires an employee</div><div>AI spends $1m autonomously</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="eyebrow">Wildcard</div>
+    <div class="quote amber">“Tell me one commonly accepted piece of AI-governance wisdom you think is wrong.”</div>
+    <p class="tiny">30 seconds each. No “it depends.”</p>
+  </div>
+</section>
+
+<section id="facts">
+  <div class="card">
+    <a class="toplink" href="#top">top ↑</a>
+    <div class="eyebrow">Facts &amp; counterfacts</div>
+    <h2>Numbers worth having ready</h2>
+    <div class="factgrid">
+      <div class="fact"><div class="big">66%</div><div class="label">AI-using US firms using AI solely to augment tasks.</div><div class="src">US Census working paper, 2026</div></div>
+      <div class="fact"><div class="big">2%</div><div class="label">AI-using firms reporting AI-related employment decreases.</div><div class="src">US Census working paper, 2026</div></div>
+      <div class="fact"><div class="big">+14%</div><div class="label">Average productivity gain for AI-assisted support workers.</div><div class="src">NBER field study, 5,179 workers</div></div>
+      <div class="fact"><div class="big">+34%</div><div class="label">Productivity gain for novice / lower-skilled workers in same study.</div><div class="src">NBER</div></div>
+      <div class="fact"><div class="big">1.0%</div><div class="label">US layoff/discharge rate in Aug 2026: weak hiring, not mass firing.</div><div class="src">BLS JOLTS</div></div>
+      <div class="fact"><div class="big">&gt;750k</div><div class="label">US jobs associated with the AI build-out since 2023.</div><div class="src">LinkedIn estimate reported by WSJ. Not net AI-created jobs.</div></div>
+      <div class="fact"><div class="big">−16%</div><div class="label">Relative employment decline among 22–25 year olds in most AI-exposed occupations.</div><div class="src">Stanford AI Index 2026; after controls</div></div>
+      <div class="fact"><div class="big">63%</div><div class="label">Stripe Atlas C-corps solo-founded in Q2 2026.</div><div class="src">Selected Atlas population, not whole economy</div></div>
+      <div class="fact"><div class="big">+17%</div><div class="label">New firm registrations after Portugal's one-stop formation reform.</div><div class="src">Formation reform research / World Bank</div></div>
+      <div class="fact"><div class="big">+5%</div><div class="label">Registered businesses after Mexico simplified registration; +2.2% wage employment.</div><div class="src">Mexico SARE research</div></div>
+    </div>
+
+    <h3>Current labour-market read</h3>
+    <p><b>September US payrolls:</b> +29k and unemployment 4.2%. Genuine softness.</p>
+    <p><b>But:</b> low separations and 1.0% layoff rate → the present pattern is more <b>low-hire than mass-fire</b>.</p>
+
+    <h3>Cayman sovereignty</h3>
+    <p>Cayman's DPA does <b>not</b> impose blanket on-island localization. International transfers require adequate protection / safeguards and remain the controller's responsibility.</p>
+
+    <h3>AWS external key stores</h3>
+    <p>External Key Store can keep the cryptographic root outside AWS. Disconnect the external key manager and KMS cannot perform decrypt operations with that key.</p>
+    <div class="quote amber">“For most workloads, the additional operational burden and greater risks to availability and performance will exceed the perceived security benefits of external key stores.”</div>
+    <p class="tiny">AWS KMS External Key Store guidance. Governance lesson: maximum control ≠ optimum risk.</p>
+
+    <h3>Agent incident</h3>
+    <p><b>Australia Medicare, June 2026:</b> unauthorized access to public and non-public files. Do not minimize it.</p>
+    <p><b>Classify it:</b> objective → obstacle → authority/tools → unexpected path → insufficient containment.</p>
+
+    <h3>Sources</h3>
+    <div class="source">
+      <a href="https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html">US Census — AI use &amp; employment</a><br>
+      <a href="https://www.bls.gov/news.release/jolts.nr0.htm">BLS JOLTS</a><br>
+      <a href="https://www.bls.gov/news.release/archives/empsit_10022026.htm">BLS Employment Situation — Sep 2026</a><br>
+      <a href="https://www.nber.org/papers/w31161">NBER — GenAI productivity field study</a><br>
+      <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy">Stanford AI Index — Economy</a><br>
+      <a href="https://stripe.com/blog/top-solo-founder-traits">Stripe Atlas — Solo founders</a><br>
+      <a href="https://ombudsman.ky/data-protection-organisation/data-protection-principles/eighth-data-protection-principle-international-transfers">Cayman Ombudsman — International transfers</a><br>
+      <a href="https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html">AWS KMS — External key stores</a>
+    </div>
+  </div>
+</section>
+
+<section id="phrases">
+  <div class="card">
+    <a class="toplink" href="#top">top ↑</a>
+    <div class="eyebrow">Rehearsal</div>
+    <h2>Phrases that should roll off the tongue</h2>
+  </div>
+
+  <div class="rehearse"><div class="line">“Exposure isn't displacement. Productivity isn't unemployment.”</div><div class="cue">Context: Census 2026 — 66% augmentation-only; 2% reported AI-related employment decreases.</div></div>
+  <div class="rehearse"><div class="line">“Right now the US labour market looks more low-hire than mass-fire.”</div><div class="cue">Context: Sep payrolls +29k, but Aug JOLTS layoffs/discharges only 1.0%.</div></div>
+  <div class="rehearse"><div class="line">“The thing I'd worry about first isn't mass unemployment. It's the bottom rung of the career ladder.”</div><div class="cue">Context: Stanford AI Index — ~16% relative employment decline among 22–25 year olds in most AI-exposed occupations.</div></div>
+  <div class="rehearse"><div class="line">“AI doesn't always replace the junior person. Sometimes it makes the junior person dramatically better.”</div><div class="cue">Context: NBER — +34% productivity for novice/lower-skilled customer-support workers.</div></div>
+  <div class="rehearse"><div class="line">“Fewer employees per company does not automatically mean fewer companies.”</div><div class="cue">Context: analytical thesis; directional support from 63% solo-founded Stripe Atlas C-corps in Q2 2026.</div></div>
+  <div class="rehearse"><div class="line">“If AI makes entrepreneurship cheaper, business-formation policy becomes AI policy.”</div><div class="cue">Context: Portugal +17% new firms after one-stop registration; Mexico +5% registered firms / +2.2% wage employment.</div></div>
+  <div class="rehearse"><div class="line">“Don't measure how quickly I get a certificate. Measure how quickly I can send an invoice and receive my first dollar.”</div><div class="cue">Context: policy metric — certificate + tax ID + bank/payment rail + invoice + first receipt.</div></div>
+  <div class="rehearse"><div class="line">“Capability isn't intent.”</div><div class="cue">Context: agent incidents can involve unauthorized behaviour without proving autonomous goals or sentience.</div></div>
+  <div class="rehearse"><div class="line">“The scary part isn't that the machine became alive. It's that we gave software enough authority to surprise us.”</div><div class="cue">Context: Australia Medicare incident — serious control/containment failure, not evidence of sentience.</div></div>
+  <div class="rehearse"><div class="line">“The strongest available control isn't automatically the right control.”</div><div class="cue">Context: AWS itself warns XKS availability/performance risks outweigh perceived security benefits for most workloads.</div></div>
+  <div class="rehearse"><div class="line">“You can make a system so sovereign that nobody can get to the data. The problem is that ‘nobody’ can eventually include you.”</div><div class="cue">Context: external-key control increases customer sovereignty and customer availability/recovery responsibility.</div></div>
+  <div class="rehearse"><div class="line">“Sovereignty isn't the same thing as geography. The questions that matter are access, control and accountability.”</div><div class="cue">Context: Cayman DPA permits international transfers with adequate protections; locality is only one sovereignty dimension.</div></div>
+  <div class="rehearse"><div class="line">“AI makes that even clearer: the asset can stay put while the capability crosses the border.”</div><div class="cue">Context: AI/trade framing — data can remain governed in place while inference, expertise or economic output crosses jurisdictions.</div></div>
+  <div class="rehearse"><div class="line">“The old trade model moved goods. AI lets us trade capability.”</div><div class="cue">Context: cross-jurisdiction framing for knowledge-intensive services and software exports.</div></div>
+  <div class="rehearse"><div class="line">“You don't necessarily have to export the data to export the value.”</div><div class="cue">Context: architecture/policy thesis — useful where controlled inference or services operate against locally governed data.</div></div>
+  <div class="rehearse"><div class="line">“We should be careful not to confuse local infrastructure with local capability.”</div><div class="cue">Context: physical hosting does not guarantee local skills, control or value capture.</div></div>
+  <div class="rehearse"><div class="line">“Sovereignty is an architecture decision, not a postcode.”</div><div class="cue">Context: jurisdiction, access, cryptographic control, audit and resilience are distinct.</div></div>
+  <div class="rehearse"><div class="line">“AI weakens the old assumption that economic value has to travel with the underlying asset. Increasingly, the asset can remain sovereign while the capability becomes an export.”</div><div class="cue">Context: Canada/Cayman cross-border AI and trade framing; thesis rather than measured statistic.</div></div>
+</section>
+
+<section id="close">
+  <div class="card">
+    <a class="toplink" href="#top">top ↑</a>
+    <div class="eyebrow">When a claim gets soft</div>
+    <h2>Six rescue prompts</h2>
+    <div class="quote">“Which specific risk are we trying to control?”</div>
+    <div class="quote">“What's the counterfactual?”</div>
+    <div class="quote">“Is that already happening, or are we predicting it?”</div>
+    <div class="quote">“What evidence would make you change your mind?”</div>
+    <div class="quote">“Are we comparing AI with perfection, or with today's human process?”</div>
+    <div class="quote">“Which control failed?”</div>
+
+    <h3>Close</h3>
+    <div class="quote amber">“It's 2030. Which was the bigger mistake of the 2020s: giving AI too much autonomy too quickly, or being so frightened that we moved too slowly?”</div>
+
+    <h3>Your thread</h3>
+    <div class="quote green">“The question isn't whether AI carries risk. Of course it does. The question is whether we can manage those risks while capturing an extraordinary increase in what individuals and very small teams are now able to accomplish.”</div>
+  </div>
+</section>
+
+</main>
+
+<nav class="bottomnav">
+  <div class="navinner">
+    <a href="#open"><strong>⌂</strong>OPEN</a>
+    <a href="#questions"><strong>?</strong>QUESTIONS</a>
+    <a href="#facts"><strong>#</strong>FACTS</a>
+    <a href="#phrases"><strong>“”</strong>PHRASES</a>
+    <a href="#close"><strong>◎</strong>CLOSE</a>
+  </div>
+</nav>
+
+<script>
+(() => {
+  let total = 45*60, remaining = total, running = false, timer = null;
+  const clock = document.getElementById('clock'), phase = document.getElementById('phase');
+  function labelFor(elapsed){
+    if(total === 15*60) return 'Q&A';
+    if(elapsed < 3*60) return 'OPEN';
+    if(elapsed < 25*60) return 'CORE';
+    if(elapsed < 34*60) return 'SOVEREIGNTY';
+    if(elapsed < 39*60) return 'RAPID FIRE';
+    if(elapsed < 43*60) return 'WILDCARD';
+    return 'CLOSE';
+  }
+  function render(){
+    const m = Math.floor(remaining/60), s = remaining%60;
+    clock.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    phase.textContent = labelFor(total-remaining);
+    document.title = clock.textContent+' — AI Panel';
+  }
+  function stop(){running=false;if(timer){clearInterval(timer);timer=null}}
+  function start(){
+    if(running){stop();return}
+    running=true;
+    timer=setInterval(()=>{ if(remaining>0){remaining--;render()} else {stop(); phase.textContent='TIME'; navigator.vibrate?.([150,100,150])}},1000)
+  }
+  document.getElementById('startBtn').onclick=start;
+  document.getElementById('resetBtn').onclick=()=>{stop();total=45*60;remaining=total;render()};
+  document.getElementById('qaBtn').onclick=()=>{stop();total=15*60;remaining=total;render()};
+  render();
+})();
+</script>
+</body>
+</html>
