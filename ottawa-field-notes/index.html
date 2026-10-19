@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="referrer" content="no-referrer"><meta name="theme-color" id="themeMeta" content="#08111f">
+<title>Ottawa Field Notes | October 2026</title>
+<style>
+:root{--bg:#08111f;--card:#101b2d;--card2:#18283e;--text:#f6f8fb;--muted:#b0c0d2;--line:#293c57;--accent:#73d4e5;--blue:#8cbaff;--gold:#f8ce86}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:105px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.52 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:calc(85px + env(safe-area-inset-bottom))}
+a{color:var(--accent);text-underline-offset:3px}
+button,textarea{font:inherit}
+header{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(9px + env(safe-area-inset-top)) 13px 11px}
+.headerrow{max-width:800px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:auto}
+.eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:850}
+header h1{font-size:19px;line-height:1.18;margin:4px 0 0;letter-spacing:-.02em}
+button{cursor:pointer}
+.toggle,.action{border:1px solid var(--line);background:var(--card2);color:var(--text);padding:9px 11px;border-radius:11px;font-size:13px;font-weight:750}
+.wrap{max-width:800px;margin:auto;padding:15px 13px}
+section{margin-bottom:15px;scroll-margin-top:110px}
+.card{padding:19px;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.hero{background:linear-gradient(140deg,#193955,var(--card) 68%)}
+h2{font-size:23px;margin:0 0 11px;line-height:1.2;letter-spacing:-.025em}
+h3{font-size:17px;margin:14px 0 6px;color:var(--accent)}
+p{margin:9px 0}
+.lead{font-size:20px;line-height:1.33;font-weight:780}
+.small{font-size:13px;color:var(--muted)}
+.tiny{font-size:11px;color:var(--muted)}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--blue);margin:0 0 7px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0 0}
+.tile{padding:13px;border-radius:13px;background:var(--card2);border:1px solid var(--line)}
+.tile strong{display:block;color:var(--accent);font-size:15px}
+.tile span{display:block;font-size:12px;line-height:1.38;color:var(--muted);margin-top:5px}
+.quote{padding:13px 15px;background:var(--card2);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;font-weight:730;font-size:18px;line-height:1.38;margin:12px 0}
+.quote.gold{border-left-color:var(--gold)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0}
+.tag{font-size:11px;background:var(--card2);border:1px solid var(--line);border-radius:999px;color:var(--muted);padding:4px 9px}
+.profile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:10px}
+.profile h3{font-size:18px;color:var(--text);margin:0}
+.role{font-size:13px;color:var(--accent);font-weight:780;margin-top:2px}
+ul{padding-left:20px;margin:8px 0}
+li{padding:3px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:15px;margin:9px 0;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:16px;font-weight:760;display:flex;align-items:center;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:21px;color:var(--accent)}
+details[open] summary:after{content:"−"}
+.innerdetails{padding:2px 16px 16px;border-top:1px solid var(--line)}
+.cue{font-weight:840;color:var(--gold);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.prompt{padding:12px 0;border-bottom:1px solid var(--line)}
+.prompt:last-child{border-bottom:0}
+.prompt strong{display:block;color:var(--accent);font-size:13px;margin-bottom:4px}
+.linkline{font-size:12px;line-height:1.7;margin-top:8px}
+#notebox{width:100%;min-height:170px;background:var(--card2);color:var(--text);padding:12px;border:1px solid var(--line);border-radius:12px;resize:vertical;line-height:1.48}
+.actions{display:flex;gap:8px;margin-top:9px}
+.action.primary{background:#164f75;border-color:#33769a}
+.bottomnav{position:fixed;z-index:45;bottom:0;left:0;right:0;background:var(--bg);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.bottomnav .links{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-width:800px;margin:auto}
+.bottomnav a{text-align:center;text-decoration:none;border-radius:9px;background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:10px;padding:7px 3px;font-weight:730}
+.bottomnav a b{display:block;font-size:16px;color:var(--text);line-height:1.25;margin-bottom:3px}
+footer{font-size:11px;color:var(--muted);padding:3px 1px 22px;line-height:1.6}
+html[data-theme=light]{--bg:#f3f7fb;--card:#fff;--card2:#edf3f8;--text:#172c42;--muted:#536678;--line:#d4dfea;--accent:#0b6e85;--blue:#285f9f;--gold:#885a08}
+html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)}
+@media(max-width:420px){.wrap{padding:12px 10px}.card{padding:16px}.lead{font-size:19px}.grid{grid-template-columns:1fr 1fr}.quote{font-size:17px}header h1{font-size:17px}}
+@media print{header,.bottomnav,.actions{display:none}.wrap{max-width:none}.card,details,.profile{break-inside:avoid}body{padding:0;background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<header id="top"><div class="headerrow"><div><div class="eyebrow">Ottawa · October 2026</div><h1>Field Notes <span class="small">/ Policy &amp; Defence</span></h1></div><button type="button" id="theme" class="toggle">☀ Light</button></div></header>
+<main class="wrap">
+<section id="start"><div class="card hero">
+<div class="kicker">Quick orientation</div><h2>Modernization is a readiness question.</h2>
+<p class="lead">Understand existing systems. Secure the foundations. Deliver useful capability in the field.</p>
+<p>Four lenses for discussing Canadian digital capacity, defence technology and government outcomes.</p>
+<div class="grid"><div class="tile"><strong>Understand</strong><span>Legacy applications, dependencies and network inventories</span></div><div class="tile"><strong>Protect</strong><span>Cyber hygiene, identity, classification and controls</span></div><div class="tile"><strong>Operate</strong><span>Local compute, intermittent connectivity and autonomy</span></div><div class="tile"><strong>Deliver</strong><span>Procurement, field trials, adoption and measurable results</span></div></div></div>
+<div class="card" style="margin-top:10px"><div class="kicker">15-second frame</div><div class="quote">“The hard part isn't acquiring new technology. It's understanding what already exists, introducing change safely, and getting capabilities that actually work into operators' hands.”</div>
+<p class="small">A category-level discussion cue, not a claim of any particular contract or deployment.</p></div></section>
+<section id="people"><div class="card"><div class="kicker">Public parliamentary profiles</div><h2>People &amp; portfolios</h2>
+<div class="profile"><h3>Roman Baber</h3><div class="role">Conservative MP · York Centre / North York, Ontario · Shadow Minister for Civil Liberties</div>
+<div class="tags"><span class="tag">Justice &amp; Human Rights committee</span><span class="tag">Civil liberties</span><span class="tag">Technology oversight</span></div>
+<ul><li>Former Ontario MPP and commercial litigation lawyer.</li><li>Advocates free speech, the rule of law and individual rights.</li><li>Examined the 2026 Lawful Access Act and questions of lawful surveillance and oversight.</li></ul>
+<p class="small"><strong>Riding:</strong> York Centre in the parliamentary listing; also described as North York on his constituency website.</p>
+<p class="small"><strong>Issue lens:</strong> balancing investigatory powers, privacy, safeguards and technology-provider obligations.</p>
+<div class="linkline"><a href="https://www.ourcommons.ca/members/en/Roman-Baber%28123276%29" target="_blank" rel="noopener noreferrer">Parliamentary record ↗</a> · <a href="https://romanbabermp.ca/" target="_blank" rel="noopener noreferrer">Biography ↗</a> · <a href="https://justice.canada.ca/eng/csj-sjc/pl/charter-charte/c22_2.html" target="_blank" rel="noopener noreferrer">Lawful access ↗</a></div></div>
+<div class="profile"><h3>James Bezan</h3><div class="role">Conservative MP · Selkirk—Interlake—Eastman, Manitoba · Defence critic</div>
+<div class="tags"><span class="tag">Vice-Chair, National Defence committee</span><span class="tag">Defence procurement</span><span class="tag">CAF readiness</span></div>
+<ul><li>First elected in 2004; previously Parliamentary Secretary to the Minister of National Defence.</li><li>His parliamentary work includes defence procurement, military personnel and Canadian support for Ukraine.</li><li>At a June 2026 committee meeting, asked about procurement priorities and access to the Defence Investment Agency for SMEs.</li></ul>
+<p class="small"><strong>Riding:</strong> Selkirk—Interlake—Eastman, Manitoba, including Selkirk, Gimli, Stonewall and nearby communities.</p>
+<p class="small"><strong>Issue lens:</strong> competition, operational requirements, supplier access, industrial capacity and accountability.</p>
+<div class="linkline"><a href="https://www.ourcommons.ca/members/en/25475" target="_blank" rel="noopener noreferrer">Parliamentary record ↗</a> · <a href="https://jamesbezan.com/about/" target="_blank" rel="noopener noreferrer">Biography ↗</a> · <a href="https://openparliament.ca/committees/national-defence/45-1/39/" target="_blank" rel="noopener noreferrer">Committee evidence ↗</a></div></div>
+</div></section>
+<section id="themes"><div class="card"><div class="kicker">Category map</div><h2>Six threads to pull</h2><p class="small">Each theme names a problem, its public relevance and a useful question. These are not descriptions of named commercial work.</p></div>
+<details open><summary>01 · Legacy modernization</summary><div class="innerdetails"><p><strong>Frame:</strong> Updating critical systems begins with application ownership, dependencies and a realistic path away from fragile technology.</p><p><span class="cue">Consequence</span> Reliability, change speed, cost and security all depend on understanding the existing estate.</p><div class="quote">“What should be measured: fewer failures, faster changes, reduced cost, or better service?”</div><p class="small">Keep projected savings separate from realized results.</p></div></details>
+<details><summary>02 · Network visibility &amp; cyber</summary><div class="innerdetails"><p><strong>Frame:</strong> Accurate IP address, subnet, asset and dependency inventories are basic enablers for security and modernization.</p><p><span class="cue">Consequence</span> Unknown infrastructure creates avoidable incident-response and recovery blind spots.</p><div class="quote">“When something changes or fails, how quickly can teams establish what is affected?”</div></div></details>
+<details><summary>03 · Resilient compute &amp; tactical communications</summary><div class="innerdetails"><p><strong>Frame:</strong> Some mission systems must operate despite limited, intermittent or unavailable connectivity.</p><p><span class="cue">Consequence</span> Local processing, resilient identity and graceful synchronization can be as important as the backhaul.</p><div class="quote">“Which functions must continue when reach-back is unavailable, and for how long?”</div><p class="small">Distinguish architectures, demonstrations and operationally fielded systems.</p></div></details>
+<details><summary>04 · Uncrewed air &amp; maritime systems</summary><div class="innerdetails"><p><strong>Frame:</strong> Sensors, safe mission planning, assured communication, edge inference and autonomy need to work as a coordinated system.</p><p><span class="cue">Consequence</span> Civilian and defence platforms can share technical requirements without sharing operational constraints.</p><div class="quote">“Where is the limiting factor: sensing, data processing, coordination, connectivity, or integration?”</div><p class="small">A procurement qualification is eligibility to compete, not a contract. <a href="https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html" target="_blank" rel="noopener noreferrer">Official DDI background ↗</a></p></div></details>
+<details><summary>05 · Procurement &amp; commercialization</summary><div class="innerdetails"><p><strong>Frame:</strong> Research funding, qualified supplier lists, pilots, purchase orders and field adoption are separate stages.</p><p><span class="cue">Consequence</span> Strong technology does not automatically translate into timely operational procurement.</p><div class="quote">“Where does the path stall between an identified requirement and a funded deployment?”</div><p class="small">Seek efficiency without assuming competition, security reviews or oversight can be skipped.</p></div></details>
+<details><summary>06 · Sovereignty, privacy &amp; responsible AI</summary><div class="innerdetails"><p><strong>Frame:</strong> Data residency, legal jurisdiction, access, encryption-key ownership and service resilience are related but not interchangeable.</p><p><span class="cue">Consequence</span> The correct hosting model depends on classification, obligations and operational requirements.</p><div class="quote">“Who can access the data, who controls keys, and what continues to work if the provider is unavailable?”</div></div></details></section>
+<section id="ask"><div class="card"><div class="kicker">Conversation starters</div><h2>Questions worth asking</h2>
+<div class="prompt"><strong>Parliamentary oversight</strong>What evidence would help demonstrate that public technology spending achieved a tangible outcome?</div>
+<div class="prompt"><strong>Defence readiness</strong>How should the committee distinguish a completed equipment purchase from operational capability?</div>
+<div class="prompt"><strong>Smaller suppliers</strong>Where do innovators encounter duplicate reviews or unclear paths to purchasing, and which safeguards remain essential?</div>
+<div class="prompt"><strong>Infrastructure decisions</strong>Which requirements genuinely call for isolated or local execution, and which support managed cloud infrastructure?</div>
+<div class="prompt"><strong>Autonomous systems</strong>Which decisions should remain deterministic, and where can machine learning safely assist?</div>
+<div class="prompt"><strong>Universal question</strong>What is changing quickly in your area—and which persistent constraint matters most?</div>
+</div><div class="card" style="margin-top:10px"><div class="kicker">Six distinctions</div><div class="grid">
+<div class="tile"><strong>Qualified ≠ contracted</strong><span>Supplier eligibility is not an awarded project.</span></div><div class="tile"><strong>Pilot ≠ deployment</strong><span>Feasibility is not field readiness.</span></div><div class="tile"><strong>Forecast ≠ outcome</strong><span>Separate targets and measured results.</span></div><div class="tile"><strong>Residency ≠ sovereignty</strong><span>Law, access, keys and resilience matter.</span></div><div class="tile"><strong>Cloud ≠ always online</strong><span>Mission continuity may need local systems.</span></div><div class="tile"><strong>Speed ≠ shortcuts</strong><span>Security and fair competition still count.</span></div>
+</div></div></section>
+<section id="notes"><div class="card"><div class="kicker">Recall · This device only</div><h2>Conversation notes</h2><p class="small">Stored in your browser only; not sent to this website and not synchronized across devices. Avoid using a shared device for sensitive notes.</p>
+<textarea id="notebox" aria-label="Conversation notes" placeholder="Who did I speak with?&#10;What did they care about?&#10;What follow-up should I make?"></textarea>
+<div class="actions"><button class="action primary" type="button" id="copy">Copy notes</button><button class="action" type="button" id="clear">Clear</button></div><p class="tiny" id="status" aria-live="polite"></p></div>
+<div class="card" style="margin-top:10px"><div class="kicker">Public sources</div><p class="linkline"><a href="https://www.ourcommons.ca/members/en/Roman-Baber%28123276%29" target="_blank" rel="noopener noreferrer">Roman Baber — House of Commons</a></p><p class="linkline"><a href="https://www.ourcommons.ca/members/en/25475" target="_blank" rel="noopener noreferrer">James Bezan — House of Commons</a></p><p class="linkline"><a href="https://openparliament.ca/committees/national-defence/45-1/39/" target="_blank" rel="noopener noreferrer">National Defence committee — June 2026</a></p><p class="linkline"><a href="https://justice.canada.ca/eng/csj-sjc/pl/charter-charte/c22_2.html" target="_blank" rel="noopener noreferrer">Justice Canada — Lawful Access Act</a></p><p class="linkline"><a href="https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html" target="_blank" rel="noopener noreferrer">Defence Drone Initiative — official backgrounder</a></p></div></section>
+<footer>Prepared October 2026 · Public parliamentary information and general discussion categories. No commercial engagement details or personal appointment arrangements are included. Not an official government publication.</footer></main>
+<nav class="bottomnav" aria-label="Page navigation"><div class="links"><a href="#start"><b>⌂</b>Start</a><a href="#people"><b>♙</b>People</a><a href="#themes"><b>≡</b>Themes</a><a href="#ask"><b>?</b>Ask</a><a href="#notes"><b>✎</b>Notes</a></div></nav>
+<script>
+(function(){
+var root=document.documentElement,button=document.getElementById('theme'),meta=document.getElementById('themeMeta');
+function setTheme(v){var light=v==='light';root.dataset.theme=light?'light':'dark';button.textContent=light?'☾ Dark':'☀ Light';meta.content=light?'#f3f7fb':'#08111f';try{localStorage.setItem('ottawa-notes-theme',v)}catch(e){}}
+var v='dark';try{v=localStorage.getItem('ottawa-notes-theme')||'dark'}catch(e){}setTheme(v);
+button.onclick=function(){setTheme(root.dataset.theme==='light'?'dark':'light')};
+var notes=document.getElementById('notebox'),status=document.getElementById('status');
+try{notes.value=localStorage.getItem('ottawa-conversation-notes')||''}catch(e){}
+notes.oninput=function(){try{localStorage.setItem('ottawa-conversation-notes',notes.value);status.textContent='Saved on this device'}catch(e){status.textContent='Local storage unavailable — copy your notes'}};
+document.getElementById('copy').onclick=function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(notes.value).then(function(){status.textContent='Copied'},function(){status.textContent='Please select and copy manually'})}else{notes.select();document.execCommand('copy');status.textContent='Copy requested'}};
+document.getElementById('clear').onclick=function(){if(confirm('Clear saved notes on this device?')){notes.value='';try{localStorage.removeItem('ottawa-conversation-notes')}catch(e){}status.textContent='Cleared'}};
+})();
+</script>
+</body></html>
