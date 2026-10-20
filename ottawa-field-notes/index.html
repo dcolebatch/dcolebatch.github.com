@@ -56,10 +56,17 @@ details[open] summary:after{content:"−"}
 .actions{display:flex;gap:8px;margin-top:9px}
 .action.primary{background:#164f75;border-color:#33769a}
 .bottomnav{position:fixed;z-index:45;bottom:0;left:0;right:0;background:var(--bg);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
-.bottomnav .links{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-width:800px;margin:auto}
+.bottomnav .links{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;max-width:800px;margin:auto}
 .bottomnav a{text-align:center;text-decoration:none;border-radius:9px;background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:10px;padding:7px 3px;font-weight:730}
 .bottomnav a b{display:block;font-size:16px;color:var(--text);line-height:1.25;margin-bottom:3px}
 footer{font-size:11px;color:var(--muted);padding:3px 1px 22px;line-height:1.6}
+.roster{background:var(--card2);border:1px solid var(--line);border-radius:13px;margin:9px 0 14px;overflow:hidden}
+.roster-row{display:grid;grid-template-columns:26px 1fr;gap:9px;padding:11px 12px;border-top:1px solid var(--line)}
+.roster-row:first-child{border-top:0}
+.roster-index{color:var(--accent);font-size:11px;font-weight:850;padding-top:4px}
+.roster-row strong{display:block;font-size:15px;line-height:1.3}
+.roster-row span:not(.roster-index){display:block;font-size:13px;color:var(--text);line-height:1.4;margin-top:3px}
+.roster-row small{display:block;font-size:11px;line-height:1.4;color:var(--muted);margin-top:4px}
 html[data-theme=light]{--bg:#f3f7fb;--card:#fff;--card2:#edf3f8;--text:#172c42;--muted:#536678;--line:#d4dfea;--accent:#0b6e85;--blue:#285f9f;--gold:#885a08}
 html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)}
 @media(max-width:420px){.wrap{padding:12px 10px}.card{padding:16px}.lead{font-size:19px}.grid{grid-template-columns:1fr 1fr}.quote{font-size:17px}header h1{font-size:17px}}
@@ -90,6 +97,31 @@ html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)
 <p class="small"><strong>Issue lens:</strong> competition, operational requirements, supplier access, industrial capacity and accountability.</p>
 <div class="linkline"><a href="https://www.ourcommons.ca/members/en/25475" target="_blank" rel="noopener noreferrer">Parliamentary record ↗</a> · <a href="https://jamesbezan.com/about/" target="_blank" rel="noopener noreferrer">Biography ↗</a> · <a href="https://openparliament.ca/committees/national-defence/45-1/39/" target="_blank" rel="noopener noreferrer">Committee evidence ↗</a></div></div>
 </div></section>
+<section id="npse"><div class="card">
+<div class="kicker">February 2026 · NATO Private-Sector Engagement</div>
+<h2>NPSE people &amp; titles</h2>
+<p class="small">Arranged by <strong>serving appointment</strong>, then <strong>former public office and delegation leadership</strong>, then <strong>industry delegates</strong>. Civilian appointments and military ranks are not directly comparable. The delegation met some officials during the program; they were not all travelling delegates.</p>
+<h3>Serving NATO &amp; Canadian representatives</h3>
+<div class="roster">
+<div class="roster-row"><span class="roster-index">01</span><div><strong>Admiral Pierre Vandier</strong><span>Supreme Allied Commander Transformation (SACT), NATO · French Navy</span><small>Senior NATO leadership; addressed the delegation by secure video link</small></div></div>
+<div class="roster-row"><span class="roster-index">02</span><div><strong>Ambassador Heidi Hulan</strong><span>Canada's Permanent Representative to NATO · Head of Mission</span><small>Serving Canadian diplomat; NATO Headquarters briefing</small></div></div>
+<div class="roster-row"><span class="roster-index">03</span><div><strong>Lieutenant-General Greg Smith</strong><span>Military Representative of Canada to NATO</span><small>Serving Canadian Armed Forces officer; NATO Headquarters briefing</small></div></div>
+<div class="roster-row"><span class="roster-index">04</span><div><strong>The Honourable John Hannaford</strong><span>Personal Representative of the Prime Minister of Canada to the European Union</span><small>Former Clerk of the Privy Council; official engagement in Brussels</small></div></div>
+</div>
+<h3>Former senior officeholders &amp; NPSE leadership</h3>
+<div class="roster">
+<div class="roster-row"><span class="roster-index">05</span><div><strong>The Honourable John Manley</strong><span>Former Deputy Prime Minister of Canada · NPSE 2026 Chef de Mission</span><small>Delegation leader; former federal minister of Finance, Foreign Affairs and Industry</small></div></div>
+<div class="roster-row"><span class="roster-index">06</span><div><strong>Vice-Admiral (Ret'd) Mark Norman</strong><span>Former Vice-Chief of the Defence Staff, Canadian Armed Forces · NPSE Military Liaison</span><small>Senior Defence Strategist, Samuel Associates</small></div></div>
+<div class="roster-row"><span class="roster-index">07</span><div><strong>The Honourable Jamie Baillie</strong><span>Former Leader of the Official Opposition, Nova Scotia · NPSE Industry Liaison</span><small>Managing Director, Atlantic, Samuel Associates</small></div></div>
+</div>
+<h3>Industry delegation</h3>
+<div class="roster">
+<div class="roster-row"><span class="roster-index">08</span><div><strong>Colonel (Ret'd) Dan McKinney</strong><span>Defence Industry Practice Lead, Amazon Web Services Canada</span><small>Former Canadian Army Director, Digital and Army Combat Systems Integration (DDACSI)</small></div></div>
+<div class="roster-row"><span class="roster-index">09</span><div><strong>Alex Maheu</strong><span>Principal, National Security and Defence Canada Public Policy, Amazon Web Services</span></div></div>
+<div class="roster-row"><span class="roster-index">10</span><div><strong>Heather Hume</strong><span>Vice-President and S.A., TD Securities</span></div></div>
+</div>
+<div class="linkline"><a href="https://www.policyinsights.ca/nato-private-sector-engagement-2026" target="_blank" rel="noopener noreferrer">NPSE 2026 overview ↗</a> · <a href="https://nato.int/en/about-us/organization/nato-structure/supreme-allied-commander-transformation-sact" target="_blank" rel="noopener noreferrer">SACT ↗</a> · <a href="https://www.nato.int/en/about-us/organization/who-we-are/member-country-representatives/canada-permanent-representatives" target="_blank" rel="noopener noreferrer">Canadian ambassador ↗</a> · <a href="https://www.nato.int/en/about-us/organization/who-we-are/military-representatives/military-representative-canada" target="_blank" rel="noopener noreferrer">Military representative ↗</a> · <a href="https://www.pm.gc.ca/en/news/news-releases/2025/10/01/prime-minister-carney-appoints-honourable-john-hannaford" target="_blank" rel="noopener noreferrer">EU appointment ↗</a></div>
+</div></section>
 <section id="themes"><div class="card"><div class="kicker">Category map</div><h2>Six threads to pull</h2><p class="small">Each theme names a problem, its public relevance and a useful question. These are not descriptions of named commercial work.</p></div>
 <details open><summary>01 · Legacy modernization</summary><div class="innerdetails"><p><strong>Frame:</strong> Updating critical systems begins with application ownership, dependencies and a realistic path away from fragile technology.</p><p><span class="cue">Consequence</span> Reliability, change speed, cost and security all depend on understanding the existing estate.</p><div class="quote">“What should be measured: fewer failures, faster changes, reduced cost, or better service?”</div><p class="small">Keep projected savings separate from realized results.</p></div></details>
 <details><summary>02 · Network visibility &amp; cyber</summary><div class="innerdetails"><p><strong>Frame:</strong> Accurate IP address, subnet, asset and dependency inventories are basic enablers for security and modernization.</p><p><span class="cue">Consequence</span> Unknown infrastructure creates avoidable incident-response and recovery blind spots.</p><div class="quote">“When something changes or fails, how quickly can teams establish what is affected?”</div></div></details>
@@ -112,7 +144,7 @@ html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)
 <div class="actions"><button class="action primary" type="button" id="copy">Copy notes</button><button class="action" type="button" id="clear">Clear</button></div><p class="tiny" id="status" aria-live="polite"></p></div>
 <div class="card" style="margin-top:10px"><div class="kicker">Public sources</div><p class="linkline"><a href="https://www.ourcommons.ca/members/en/Roman-Baber%28123276%29" target="_blank" rel="noopener noreferrer">Roman Baber — House of Commons</a></p><p class="linkline"><a href="https://www.ourcommons.ca/members/en/25475" target="_blank" rel="noopener noreferrer">James Bezan — House of Commons</a></p><p class="linkline"><a href="https://openparliament.ca/committees/national-defence/45-1/39/" target="_blank" rel="noopener noreferrer">National Defence committee — June 2026</a></p><p class="linkline"><a href="https://justice.canada.ca/eng/csj-sjc/pl/charter-charte/c22_2.html" target="_blank" rel="noopener noreferrer">Justice Canada — Lawful Access Act</a></p><p class="linkline"><a href="https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html" target="_blank" rel="noopener noreferrer">Defence Drone Initiative — official backgrounder</a></p></div></section>
 <footer>Prepared October 2026 · Public parliamentary information and general discussion categories. No commercial engagement details or personal appointment arrangements are included. Not an official government publication.</footer></main>
-<nav class="bottomnav" aria-label="Page navigation"><div class="links"><a href="#start"><b>⌂</b>Start</a><a href="#people"><b>♙</b>People</a><a href="#themes"><b>≡</b>Themes</a><a href="#ask"><b>?</b>Ask</a><a href="#notes"><b>✎</b>Notes</a></div></nav>
+<nav class="bottomnav" aria-label="Page navigation"><div class="links"><a href="#start"><b>⌂</b>Start</a><a href="#people"><b>♙</b>MPs</a><a href="#npse"><b>★</b>NPSE</a><a href="#themes"><b>≡</b>Themes</a><a href="#ask"><b>?</b>Ask</a><a href="#notes"><b>✎</b>Notes</a></div></nav>
 <script>
 (function(){
 var root=document.documentElement,button=document.getElementById('theme'),meta=document.getElementById('themeMeta');
