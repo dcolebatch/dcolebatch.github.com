@@ -76,6 +76,35 @@ html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)
 <body>
 <header id="top"><div class="headerrow"><div><div class="eyebrow">Ottawa · October 2026</div><h1>Field Notes <span class="small">/ Policy &amp; Defence</span></h1></div><button type="button" id="theme" class="toggle">☀ Light</button></div></header>
 <main class="wrap">
+<section id="intro">
+<div class="card hero">
+<div class="kicker">Hill Day · Opening introduction</div>
+<h2>Canadian capability. Global scale. A path to delivery.</h2>
+<p class="small">Main script · approximately 45 seconds · in the order recommended by the government-relations briefing: company story → cloud-enabled growth → procurement barrier.</p>
+<div class="quote" id="intro45">“I'm the founder of a Canadian software company that helps governments and large enterprises modernize the critical technology they've depended on for decades. We've turned years of hands-on modernization experience into our own software, helping organizations understand complex systems, reduce risk and deliver measurable improvements in performance and cost. Building on AWS has enabled our Canadian team to develop intellectual property, scale internationally and apply that expertise to defence-relevant challenges. The opportunity for Canada is enormous. But there's a gap between proving technology works and getting it into service. We need Canadian innovators to have a fair, practical path from demonstrated capability to funded procurement.”</div>
+<button class="action primary" type="button" data-copy="intro45">Copy main introduction</button>
+<p class="tiny" id="introCopyStatus" aria-live="polite"></p>
+<div class="tags"><span class="tag">01 · What we build</span><span class="tag">02 · Why cloud matters</span><span class="tag">03 · What blocks delivery</span></div>
+</div>
+<details><summary>Short version · 20 seconds</summary><div class="innerdetails">
+<div class="quote" id="intro20">“I founded a Canadian software company to help governments and large organizations modernize complex, critical systems. We build our own technology and use AWS to reach customers well beyond Canada. What we want to see is a dependable bridge from proven Canadian innovation to actual adoption—not just demonstrations that never become contracts.”</div>
+<button class="action" type="button" data-copy="intro20">Copy short introduction</button>
+</div></details>
+<details><summary>Expanded version · 75 seconds</summary><div class="innerdetails">
+<div class="quote" id="intro75">“I started a Canadian software company around an unglamorous but urgent challenge: governments and major enterprises depend on systems that are costly to maintain, difficult to change and increasingly hard to secure. Our software helps teams understand the applications, dependencies and networks they already have, make sensible modernization decisions and put those plans into practice. This comes from hands-on enterprise and public-sector experience, not just a laboratory concept. We've invested in Canadian intellectual property, while building on AWS gives our team the global scale, security building blocks and AI infrastructure to compete internationally without having to create that infrastructure ourselves. Those capabilities are increasingly relevant to defence, where digital readiness depends on secure, resilient and interoperable technology. But the obstacles facing smaller Canadian firms aren't always technical. We can demonstrate a capability and still struggle to navigate the transition to funded procurement. The important question is how Canada creates a transparent, competitive path from technical validation to capability that operators can actually use.”</div>
+<button class="action" type="button" data-copy="intro75">Copy expanded introduction</button>
+</div></details>
+<div class="card" style="margin-top:10px">
+<div class="kicker">Presenter's memory cues</div>
+<div class="grid">
+<div class="tile"><strong>Company</strong><span>Canadian engineering, enterprise and government modernization, software IP</span></div>
+<div class="tile"><strong>Cloud</strong><span>Hyperscale reach, security foundations, Canadian innovation competing abroad</span></div>
+<div class="tile"><strong>Barrier</strong><span>Demo-to-procurement gap, SME access, predictable buying pathways</span></div>
+<div class="tile"><strong>Outcome</strong><span>Measured performance, resilience, operational capability—not announcements</span></div>
+</div>
+<p class="small">Keep claims evidence-based: do not imply that exploratory defence discussions are fielded deployments. No client identities, private contract details, commercial figures or undisclosed partners are included here.</p>
+</div>
+</section>
 <section id="start"><div class="card hero">
 <div class="kicker">Quick orientation</div><h2>Modernization is a readiness question.</h2>
 <p class="lead">Understand existing systems. Secure the foundations. Deliver useful capability in the field.</p>
@@ -144,7 +173,7 @@ html[data-theme=light] .hero{background:linear-gradient(140deg,#dfedf9,#fff 65%)
 <div class="actions"><button class="action primary" type="button" id="copy">Copy notes</button><button class="action" type="button" id="clear">Clear</button></div><p class="tiny" id="status" aria-live="polite"></p></div>
 <div class="card" style="margin-top:10px"><div class="kicker">Public sources</div><p class="linkline"><a href="https://www.ourcommons.ca/members/en/Roman-Baber%28123276%29" target="_blank" rel="noopener noreferrer">Roman Baber — House of Commons</a></p><p class="linkline"><a href="https://www.ourcommons.ca/members/en/25475" target="_blank" rel="noopener noreferrer">James Bezan — House of Commons</a></p><p class="linkline"><a href="https://openparliament.ca/committees/national-defence/45-1/39/" target="_blank" rel="noopener noreferrer">National Defence committee — June 2026</a></p><p class="linkline"><a href="https://justice.canada.ca/eng/csj-sjc/pl/charter-charte/c22_2.html" target="_blank" rel="noopener noreferrer">Justice Canada — Lawful Access Act</a></p><p class="linkline"><a href="https://www.canada.ca/en/department-national-defence/news/2026/07/defence-drone-initiative.html" target="_blank" rel="noopener noreferrer">Defence Drone Initiative — official backgrounder</a></p></div></section>
 <footer>Prepared October 2026 · Public parliamentary information and general discussion categories. No commercial engagement details or personal appointment arrangements are included. Not an official government publication.</footer></main>
-<nav class="bottomnav" aria-label="Page navigation"><div class="links"><a href="#start"><b>⌂</b>Start</a><a href="#people"><b>♙</b>MPs</a><a href="#npse"><b>★</b>NPSE</a><a href="#themes"><b>≡</b>Themes</a><a href="#ask"><b>?</b>Ask</a><a href="#notes"><b>✎</b>Notes</a></div></nav>
+<nav class="bottomnav" aria-label="Page navigation"><div class="links"><a href="#intro"><b>⌂</b>Intro</a><a href="#people"><b>♙</b>MPs</a><a href="#npse"><b>★</b>NPSE</a><a href="#themes"><b>≡</b>Themes</a><a href="#ask"><b>?</b>Ask</a><a href="#notes"><b>✎</b>Notes</a></div></nav>
 <script>
 (function(){
 var root=document.documentElement,button=document.getElementById('theme'),meta=document.getElementById('themeMeta');
@@ -155,6 +184,7 @@ var notes=document.getElementById('notebox'),status=document.getElementById('sta
 try{notes.value=localStorage.getItem('ottawa-conversation-notes')||''}catch(e){}
 notes.oninput=function(){try{localStorage.setItem('ottawa-conversation-notes',notes.value);status.textContent='Saved on this device'}catch(e){status.textContent='Local storage unavailable — copy your notes'}};
 document.getElementById('copy').onclick=function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(notes.value).then(function(){status.textContent='Copied'},function(){status.textContent='Please select and copy manually'})}else{notes.select();document.execCommand('copy');status.textContent='Copy requested'}};
+document.querySelectorAll('[data-copy]').forEach(function(button){button.addEventListener('click',function(){var node=document.getElementById(button.getAttribute('data-copy'));var message=document.getElementById('introCopyStatus');var words=node?node.textContent.trim():'';if(!words){return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(words).then(function(){message.textContent='Introduction copied';},function(){message.textContent='Could not copy automatically';});}else{message.textContent='Select the introduction to copy it';}})});
 document.getElementById('clear').onclick=function(){if(confirm('Clear saved notes on this device?')){notes.value='';try{localStorage.removeItem('ottawa-conversation-notes')}catch(e){}status.textContent='Cleared'}};
 })();
 </script>
