@@ -226,7 +226,7 @@ function broadcast(){ if (chan && MODE === 'deck') chan.postMessage(state()); }
 function applyListState(list){
   audItems().forEach(li => { if (li.classList.contains('custom')) li.remove(); else li.classList.remove('in'); });
   custom.length = 0; revealOrder.length = 0;
-  (list || []).forEach(x => { if (x.c){ const li = document.createElement('li'); li.className = 'custom in'; li.dataset.k = 'custom'; li.innerHTML = '<span class="n">+</span><div></div>'; li.querySelector('div').textContent = x.c; aud.appendChild(li); custom.push(li); revealOrder.push(li); } else { const li = aud.querySelector(`li[data-k="${x.k}"]`); if (li){ li.classList.add('in'); revealOrder.push(li); } } });
+  (list || []).forEach(x => { if (x.c){ const li = document.createElement('li'); li.className = 'custom in'; li.dataset.k = 'custom'; li.innerHTML = '<span class="n">+</span><div></div>'; li.querySelector('div').textContent = x.c; aud.appendChild(li); custom.push(li); revealOrder.push(li); } else { const li = audItems().find(el => el.dataset.k === x.k); if (li){ li.classList.add('in'); revealOrder.push(li); } } });
   board.classList.toggle('has', revealOrder.length > 0); syncAnswers();
 }
 if (chan) chan.onmessage = e => {
@@ -268,8 +268,8 @@ document.getElementById('viewport').addEventListener('click', e => {
   if (e.clientX < innerWidth/3) prev(); else next();
 });
 let tx0 = null;
-addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, {passive: true});
-addEventListener('touchend', e => { if (tx0 === null) return; const dx = e.changedTouches[0].clientX - tx0; if (Math.abs(dx) > 50) (dx < 0 ? next() : prev()); tx0 = null; });
+addEventListener('touchstart', e => { if (MODE !== 'deck') return; tx0 = e.touches[0].clientX; }, {passive: true});
+addEventListener('touchend', e => { if (MODE !== 'deck' || tx0 === null) return; const dx = e.changedTouches[0].clientX - tx0; if (Math.abs(dx) > 50) (dx < 0 ? next() : prev()); tx0 = null; });
 
 /* ---------- presenter window ---------- */
 let pStart = null;
