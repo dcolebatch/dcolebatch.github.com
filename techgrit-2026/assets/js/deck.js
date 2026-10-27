@@ -191,6 +191,7 @@ function applySteps(s, k){
 /* ---------- navigation ---------- */
 function show(i, k, opts = {}){
   i = Math.max(0, Math.min(slides.length - 1, i));
+  if (i !== cur && MODE === 'deck') notesEl.classList.remove('open');
   const changed = i !== cur || opts.force;
   if (changed){ const old = animFor(cur); if (old) old.stop(); slides[cur].classList.remove('active'); }
   cur = i; step = Math.max(0, Math.min(maxStep(slides[i]), k|0));
