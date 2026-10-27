@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloud Migration in the AI Era: From Assumptions to Evidence - TechGrit x Tidal</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/brand/tidal-logomark-rgb.svg">
+<link rel="stylesheet" href="assets/css/deck.css">
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- 1 TITLE -->
+<section class="slide s-title" data-title="Title">
+  <img class="logo" src="assets/img/brand/tidal-horizontal-white.svg" alt="Tidal" style="height:110px;top:60px;left:120px">
+  <svg class="bg-loop" viewBox="0 0 1000 1000" aria-hidden="true">
+    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05A2C2" stop-opacity=".9"/><stop offset="1" stop-color="#05A2C2" stop-opacity="0"/></linearGradient></defs>
+    <circle cx="500" cy="500" r="380" fill="none" stroke="rgba(216,243,246,.08)" stroke-width="40"/>
+    <g class="spin"><circle cx="500" cy="500" r="380" fill="none" stroke="url(#g1)" stroke-width="40" stroke-linecap="round" stroke-dasharray="700 1688"/><circle cx="500" cy="120" r="26" fill="#fff"/></g>
+    <circle cx="500" cy="500" r="250" fill="none" stroke="rgba(216,243,246,.06)" stroke-width="18"/>
+    <g class="spin2"><circle cx="500" cy="500" r="250" fill="none" stroke="#F7CE00" stroke-opacity=".7" stroke-width="18" stroke-linecap="round" stroke-dasharray="260 1311"/></g>
+  </svg>
+  <p class="kicker">TechGrit webinar · Thursday, October 29, 2026</p>
+  <h1 style="font-size:90px;max-width:1450px">Cloud Migration in the AI Era:<br><span class="accent">From Assumptions to Evidence</span></h1>
+  <p class="sub">Agentic loops, rich context, and the new cost of modernization</p>
+  <div class="meta">
+    <div><b>David Colebatch</b>Founder &amp; CEO, Tidal</div>
+    <div><b>Jithendra "Jitu" Ganji</b>Host, TechGrit</div>
+  </div>
+</section>
+
+<!-- 2 FORMAT -->
+<section class="slide" data-title="Tonight's conversation">
+  <p class="kicker">How we'll spend the next 45 minutes</p>
+  <h2>A conversation</h2>
+  <div class="timeline">
+    <div class="seg"><div class="bar" style="background:#7FA3AD"></div><div class="t">Open</div><h3>Intro</h3><p>Jitu frames the question</p></div>
+    <div class="seg hl"><div class="bar"></div><div class="t">Fireside</div><h3>From assumptions to evidence</h3><p>What agentic loops change about the cost of modernization - and what they still can't do on their own</p></div>
+    <div class="seg"><div class="bar" style="background:#F7CE00"></div><div class="t">Show</div><h3>Short demo</h3><p>The same loop, with and without context</p></div>
+    <div class="seg"><div class="bar" style="background:#5CC873"></div><div class="t">Your turn</div><h3>Live Q&amp;A</h3><p>Drop questions in the chat any time</p></div>
+  </div>
+  <p class="lead" style="margin-top:60px;font-size:32px">You'll do some of the work tonight: there's a list we're going to build together.</p>
+  <div class="brandbar"><img src="assets/img/brand/tidal-horizontal-white.svg" alt="Tidal" style="height:64px"><span>TechGrit × Tidal</span></div>
+</section>
+
+<!-- 3 OLD ASSUMPTION -->
+<section class="slide" data-title="The old assumption" data-anim="assume">
+  <p class="kicker">Beat 1 · The old assumption</p>
+  <h2>"Modernization is expensive. So we lift and shift it, or leave it alone."</h2>
+  <div class="two" style="margin-top:10px;grid-template-columns:1000px 1fr">
+    <div class="portfolio" id="pf"></div>
+    <div class="legend" style="margin-top:70px">
+      <div><span style="background:rgba(216,243,246,.14)"></span>Left alone</div>
+      <div><span style="background:#2C6E80"></span>Lifted and shifted</div>
+      <div><span style="background:var(--warning)"></span>Properly modernized</div>
+      <div class="src" style="margin-top:10px">A typical-looking portfolio. Illustrative, not data.</div>
+    </div>
+  </div>
+  <div class="question"><div class="qmark">?</div><div>What does it cost to modernize <u>one</u> app properly?</div></div>
+</section>
+
+<!-- 4 LOOPS -->
+<section class="slide" data-title="Break the math with loops" data-anim="loop4">
+  <p class="kicker">Beat 2 · Break the math</p>
+  <h2 style="font-size:66px;max-width:none">An agent loop: <span class="accent">plan, change, test, retry</span> until it passes</h2>
+  <div class="two" style="grid-template-columns:680px 1fr;gap:80px;margin-top:26px">
+    <div class="loop" id="loopA" data-fails="2" data-mode="pass" style="width:680px;height:560px"></div>
+    <div class="chart" style="padding-top:30px">
+      <svg width="860" height="440" viewBox="0 0 860 440">
+        <defs><linearGradient id="gold-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CE00" stop-opacity=".28"/><stop offset="1" stop-color="#F7CE00" stop-opacity="0"/></linearGradient></defs>
+        <line class="axis" x1="60" y1="20" x2="60" y2="380"/><line class="axis" x1="60" y1="380" x2="840" y2="380"/>
+        <path class="area" id="costArea" d=""/>
+        <path class="curve" id="costCurve" d="M70,60 C220,70 300,250 420,310 S700,368 830,372"/>
+        <text x="0" y="0" transform="translate(34,330) rotate(-90)">Cost per attempt</text>
+        <text x="70" y="420">Hand-written change</text>
+        <text x="830" y="420" text-anchor="end">Agentic loop</text>
+      </svg>
+      <p class="lead" style="font-size:32px;margin-top:14px;max-width:860px">Each retry costs minutes, not sprints. The cost of execution is trending toward zero.</p>
+    </div>
+  </div>
+  <div class="illus" style="bottom:205px"><b>Illustrative</b> trend, not measured data</div>
+  <div class="question" style="bottom:100px"><div class="qmark">?</div><div>So... is every app affordable to modernize now?</div></div>
+</section>
+
+<!-- 5 TWIST -->
+<section class="slide" data-title="The twist: a blind loop" data-anim="loop5">
+  <p class="kicker">Beat 3 · The twist</p>
+  <h2>Same loop. No context. <span class="warn">Confidently wrong.</span></h2>
+  <div class="two" style="grid-template-columns:600px 1fr;gap:70px;margin-top:24px">
+    <div class="loop blind" id="loopB" data-fails="1" data-mode="intent" style="width:600px;height:520px"></div>
+    <div>
+      <div class="reality">
+        <div class="rcard" data-step="1"><div class="x">✕</div><div>Rebuilt a module the business already planned to retire</div></div>
+        <div class="rcard" data-step="2"><div class="x">✕</div><div>Dropped a nightly partner file feed the repo never mentions</div></div>
+        <div class="rcard" data-step="3"><div class="x">✕</div><div>Optimized what's easy to measure, not what the owner cares about</div></div>
+      </div>
+      <p class="src" style="margin-top:14px">Illustrative failure patterns</p>
+      <div class="quote" style="margin-top:28px" data-step="4">"Correct in shape but wrong in business intent."<cite>David Colebatch, "The Architecture Question That Never Dies", tidalcloud.com blog</cite></div>
+    </div>
+  </div>
+  <div class="question" style="bottom:110px"><div class="qmark">?</div><div>What does the agent need that the code doesn't contain?</div></div>
+</section>
+
+<!-- 6 AUDIENCE LIST -->
+<section class="slide" data-title="Your list (live)" data-list="audience">
+  <p class="kicker">Beat 4 · Your turn - use the chat</p>
+  <h2 style="font-size:60px;max-width:none">What does the agent need that the code doesn't contain?</h2>
+  <div class="board" id="board">
+    <div class="empty"><div class="mic">💬</div><div>Waiting for the room...</div><div style="font-size:24px">Type your answers in the chat</div></div>
+    <ul class="items" id="aud">
+      <li data-k="intent"><span class="n">1</span><div>Business intent<small>Why does this app exist?</small></div></li>
+      <li data-k="owners"><span class="n">2</span><div>Owners<small>Who decides, who gets paged?</small></div></li>
+      <li data-k="deps"><span class="n">3</span><div>Dependencies<small>What breaks if it moves?</small></div></li>
+      <li data-k="flows"><span class="n">4</span><div>Data flows<small>Who reads and writes its data?</small></div></li>
+      <li data-k="risk"><span class="n">5</span><div>Risk &amp; compliance<small>What can't go wrong?</small></div></li>
+      <li data-k="matters"><span class="n">6</span><div>What matters to the business<small>Value, criticality, cost of downtime</small></div></li>
+      <li data-k="retire"><span class="n">7</span><div>What can be retired<small>Not everything deserves a loop</small></div></li>
+    </ul>
+  </div>
+  <div class="addbox" id="addbox"><input id="addinput" placeholder="Type what the audience said, then Enter"><div>Enter to add · Esc to cancel</div></div>
+</section>
+
+<!-- 7 BOTTLENECK -->
+<section class="slide" data-title="The bottleneck" data-anim="bottleneck">
+  <p class="kicker">Beat 5 · The bottleneck</p>
+  <h2>Now gather that list for 200 apps. <span class="gold">By hand.</span></h2>
+  <div class="race">
+    <div class="lab"><b>The change</b>agentic loop, per app</div>
+    <div class="track fast"><div class="fill" id="fastFill"></div><div class="val" id="fastVal"></div></div>
+    <div class="lab"><b>The context</b>interviews, workshops, spreadsheets</div>
+    <div class="track slow"><div class="fill" id="slowFill"></div><div class="val" id="slowVal"></div></div>
+  </div>
+  <div class="two" style="grid-template-columns:760px 1fr;gap:80px;margin-top:46px">
+    <div><div class="tiles" id="tiles"></div><div class="src" style="margin-top:12px"><span id="tileCount">0</span> of 200 apps with context gathered · <b style="color:var(--ink-2)">Illustrative</b> portfolio, relative pace only</div></div>
+    <div>
+      <div class="big-claim" style="font-size:54px">The scarce thing is no longer code.<br><span class="accent">It's context.</span></div>
+      <p class="src" style="margin-top:22px;font-size:22px;line-height:1.45;max-width:780px">"At enterprise scale, manual approaches break down because of duplicated evidence collection, inconsistent scoring, weak provenance, and the inability to maintain the assessment as evidence changes." - tidalcloud.com/enterprise-modernization</p>
+    </div>
+  </div>
+  <div class="question" style="bottom:110px"><div class="qmark">?</div><div>Where does rich context come from, at portfolio scale?</div></div>
+</section>
+
+<!-- 8 REVEAL -->
+<section class="slide" data-title="Your list, answered" data-reveal="1">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div><p class="kicker">Beat 6 · Your list, answered</p><h2 style="font-size:56px">Context gathered at portfolio speed</h2></div>
+    <img class="acc-logo" src="assets/img/brand/tidal-accelerator-logo.svg" alt="Tidal Accelerator" data-step="1" style="height:64px">
+  </div>
+  <div class="reveal-grid">
+    <ul class="items" id="ansList"></ul>
+    <div class="caps">
+      <div class="cap" data-step="1"><h3>Server &amp; infrastructure discovery</h3><p>Apps, servers, databases and data pipelines, grouped by application</p><div class="maps">→ dependencies · data flows</div></div>
+      <div class="cap" data-step="2"><h3>Source code &amp; database analysis</h3><p>Languages, frameworks, data stores and their constraints</p><div class="maps">→ dependencies · risk</div></div>
+      <div class="cap" data-step="3"><h3>Business context capture</h3><p>Application owner interviews: 20 ready-made, customizable questions</p><div class="maps">→ intent · owners · what matters · what can be retired · your additions</div></div>
+      <div class="cap" data-step="4"><h3>AI-assisted insights</h3><p>Risk patterns and modernization candidates, grounded in evidence</p><div class="maps">→ risk · what can be retired</div></div>
+      <div class="cap agent" data-step="5"><h3>API, CLI and published agent skills</h3><p>So your coding agents read the context before they loop</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 SCREENSHOTS -->
+<section class="slide" data-title="What the evidence looks like">
+  <p class="kicker">Real captures · demo workspace</p>
+  <h2 style="font-size:60px">Evidence, not assumptions</h2>
+  <div class="shots">
+    <div class="shot a" data-step="1"><div class="chrome"><i></i><i></i><i></i></div><img src="assets/img/accelerator/accelerator-host-discovery-2026.webp" alt="Tidal Accelerator host discovery"><div class="cap2">Discovery</div></div>
+    <div class="shot b" data-step="2"><div class="chrome"><i></i><i></i><i></i></div><img src="assets/img/accelerator/accelerator-db-analysis-2026.webp" alt="Tidal Accelerator database analysis"><div class="cap2">Database analysis</div></div>
+    <div class="shot c" data-step="3"><div class="chrome"><i></i><i></i><i></i></div><img src="assets/img/accelerator/accelerator-application-interview-2026.webp" alt="Tidal Accelerator application owner interview"><div class="cap2">Application owner interview</div></div>
+  </div>
+</section>
+
+<!-- 10 AGENTS -->
+<section class="slide" data-title="Context agents can read">
+  <p class="kicker">From record to loop</p>
+  <h2 style="font-size:64px">Context your coding agents can actually read</h2>
+  <div class="flow" data-step="1">
+    <div class="box"><b>Accelerator</b><span>application record and evidence</span></div><div class="arr">→</div>
+    <div class="box"><b>API + Tidal Tools CLI</b><span>typed, auditable access</span></div><div class="arr">→</div>
+    <div class="box"><b>Agent skill</b><span>public, open standard</span></div><div class="arr">→</div>
+    <div class="box"><b>Your coding agent</b><span>plans with context, then loops</span></div>
+  </div>
+  <div class="term" style="margin-top:44px" data-step="2">
+    <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="c"># Public: github.com/tidalmigrations/agent-skills</span>
+<span class="p">$</span> npx skills add tidalmigrations/agent-skills --skill tidal-tools
+<span class="p">$</span> tidal login
+<span class="p">$</span> tidal analyze code</pre>
+  </div>
+  <p class="src" style="margin-top:18px">Works with Agent Skills-compatible tools such as Cursor, Claude Code and Kiro, per the repository README.</p>
+  <div class="quote" style="margin-top:56px;font-size:40px" data-step="3">"Guardrails live below the agent."<cite>David Colebatch, "The Architecture Question That Never Dies", tidalcloud.com blog</cite></div>
+</section>
+
+<!-- 11 DEMO CUE -->
+<section class="slide" data-title="Demo: with vs without context" data-anim="demo">
+  <p class="kicker">Demo</p>
+  <h2 style="font-size:60px">The same loop, with and without context</h2>
+  <div class="vs">
+    <div class="col"><h3 class="warn">Raw code only</h3><p>tests pass · intent missed</p><div class="loop blind" id="loopC" data-fails="1" data-mode="intent" data-size="small" style="width:600px;height:470px;margin:6px auto 0"></div></div>
+    <div class="col" style="border-color:rgba(92,200,115,.5)"><h3 class="okc">Code + portfolio context</h3><p>tests pass · intent met</p><div class="loop" id="loopD" data-fails="1" data-mode="context" data-size="small" style="width:600px;height:470px;margin:6px auto 0"></div></div>
+  </div>
+  <div class="demo-banner"><span>▶ LIVE DEMO · switch screen share to Accelerator</span><small>1 to 10 minutes</small></div>
+</section>
+
+<!-- 12 PORTFOLIO -->
+<section class="slide" data-title="Portfolio, not product" data-anim="portfolio">
+  <p class="kicker">Beat 7 · Portfolio, not product</p>
+  <h2 style="font-size:64px">With context, point the loops at the <span class="gold">highest-value apps first</span></h2>
+  <div class="two" style="grid-template-columns:1000px 1fr;gap:60px;margin-top:20px">
+    <svg class="scatter" id="scatter" width="1000" height="660" viewBox="0 0 1000 660"></svg>
+    <div style="padding-top:60px">
+      <p class="lead" style="font-size:34px">Context tells you which apps deserve a loop, which should be retired, and which can wait.</p>
+      <p class="lead" style="font-size:34px;margin-top:30px">That's a portfolio decision - made before you spend on execution.</p>
+      <p class="src" style="margin-top:40px">Illustrative portfolio</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 TAKEAWAY -->
+<section class="slide s-take" data-title="The takeaway">
+  <p class="kicker">One thing to remember</p>
+  <h2>The cost of modernization is now set by the <span class="accent">quality of your context</span>.</h2>
+  <div class="brandbar"><img src="assets/img/brand/tidal-horizontal-white.svg" alt="Tidal" style="height:64px"><span>TechGrit × Tidal</span></div>
+</section>
+
+<!-- 14 TEMM -->
+<section class="slide" data-title="The methodology" data-anim="temm">
+  <p class="kicker">Free to use · the educational spine</p>
+  <h2 style="font-size:60px">Tidal Enterprise Modernization Methodology™</h2>
+  <div class="temm">
+    <div class="ph"><div class="t">Discover</div><h3>Enterprise Intelligence</h3><div class="out">Evidence-backed context, not mere inventory</div><ul><li><b>Portfolio discovery</b></li><li>Owner interviews, dependencies, code and data</li></ul></div>
+    <div class="ph"><div class="t">Decide</div><h3>Transformation Strategy</h3><div class="out">The right future for each app</div><ul><li><b>Workload classification</b> (6R)</li><li><b>Prioritization</b></li><li><b>Migration path definition</b></li></ul></div>
+    <div class="ph"><div class="t">Deliver</div><h3>Measurable Business Outcomes</h3><div class="out">Not merely "apps moved"</div><ul><li>Point loops at approved, high-value work</li><li>Return new evidence to the record</li></ul></div>
+  </div>
+  <div class="reassess"><svg width="70" height="70" viewBox="0 0 70 70"><g class="spinr" style="transform-origin:35px 35px"><path d="M35 8 A27 27 0 1 1 9 30" fill="none" stroke="#05A2C2" stroke-width="6" stroke-linecap="round"/><path d="M2 26 L10 34 L17 24" fill="none" stroke="#05A2C2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g></svg><span>Reassess as conditions change - the methodology is a loop too.</span><span class="src" style="margin-left:auto;font-family:var(--mono);font-size:24px;color:var(--info)">tidalcloud.com/enterprise-modernization</span></div>
+</section>
+
+<!-- 15 Q&A -->
+<section class="slide s-title" data-title="Q&amp;A">
+  <svg class="bg-loop" viewBox="0 0 1000 1000" aria-hidden="true">
+    <circle cx="500" cy="500" r="380" fill="none" stroke="rgba(216,243,246,.08)" stroke-width="40"/>
+    <g class="spin"><circle cx="500" cy="500" r="380" fill="none" stroke="url(#g1)" stroke-width="40" stroke-linecap="round" stroke-dasharray="700 1688"/><circle cx="500" cy="120" r="26" fill="#fff"/></g>
+  </svg>
+  <p class="kicker">Live Q&amp;A</p>
+  <h1 style="font-size:120px">Your questions</h1>
+  <p class="sub">Use the chat - Jitu will bring them in.</p>
+</section>
+
+<!-- 16 THANK YOU -->
+<section class="slide" data-title="Thank you">
+  <p class="kicker">Thank you</p>
+  <h2>Thank you to <span class="accent">TechGrit</span> and Jitu for hosting</h2>
+  <div class="contact" style="margin-top:90px">
+    <img class="av" src="assets/img/david.jpg" alt="David Colebatch">
+    <div class="who"><b>David Colebatch</b><span>Founder &amp; CEO, Tidal</span>
+      <div class="links">linkedin.com/in/david-colebatch<br>tidalcloud.com/enterprise-modernization</div></div>
+  </div>
+  <p class="lead" style="margin-top:90px;font-size:38px">Start with the methodology. It's free. The first step is always to understand your portfolio.</p>
+  <div class="brandbar"><img src="assets/img/brand/tidal-horizontal-white.svg" alt="Tidal" style="height:64px"><span>TechGrit × Tidal · October 29, 2026</span></div>
+</section>
+
+<div id="progress"></div><div id="counter"></div>
+</div></div>
+
+<div id="notes"><div class="warnline">Speaker notes are visible on this screen · press N to hide before sharing · P opens a separate presenter window</div><div id="notesBody"></div></div>
+<div id="help"><div class="card"><h3 style="font-size:24px;margin-bottom:12px">Keys</h3>
+<div><kbd>→</kbd><kbd>Space</kbd>next step / slide &nbsp; <kbd>←</kbd>back</div>
+<div><kbd>⇧→</kbd>skip to next slide &nbsp; <kbd>Home</kbd><kbd>End</kbd>first / last</div>
+<div><kbd>R</kbd>replay this slide's animation</div>
+<div><kbd>N</kbd>toggle speaker notes (visible to audience!)</div>
+<div><kbd>P</kbd>open presenter window (notes, timer, next slide)</div>
+<div><kbd>F</kbd>fullscreen &nbsp; <kbd>B</kbd>blackout &nbsp; <kbd>C</kbd>hide slide counter</div>
+<div><kbd>G</kbd>go to slide number</div>
+<div>List slide: <kbd>1</kbd>-<kbd>7</kbd>reveal item &nbsp; <kbd>A</kbd>add audience item &nbsp; <kbd>⌫</kbd>hide last</div>
+<div style="margin-top:10px;color:#7FA3AD">Click right side = next, left third = back. <kbd>?</kbd>closes this.</div></div></div>
+<div id="black"></div>
+<div id="presenter"></div>
+<script src="assets/js/deck.js"></script>
+</body>
+</html>
