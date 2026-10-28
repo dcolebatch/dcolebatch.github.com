@@ -214,17 +214,35 @@ function show(i, k, opts = {}){
   document.getElementById('counter').textContent = `${i + 1} / ${slides.length}`;
   renderNotes();
   if (MODE === 'deck' && !opts.silent){ history.replaceState(null, '', `#${i + 1}`); broadcast(); }
+  if (opts.auto) autoSchedule(AUTO_GAP);
+  else if (!opts.back && !opts.silent && !opts.end && (step < maxStep(slides[i]) || slides[i].dataset.list)) autoSchedule(changed ? AUTO_FIRST : AUTO_GAP);
+  else autoStop();
+}
+/* ---------- auto builds (no clicks needed; ?auto=0 turns off) ---------- */
+const AUTO = MODE === 'deck' && Q.get('auto') !== '0';
+const AUTO_FIRST = 1400, AUTO_GAP = 1900, AUTO_LIST_GAP = 2200;
+let autoTimer = 0;
+function autoStop(){ clearTimeout(autoTimer); autoTimer = 0; }
+function autoSchedule(delay){
+  autoStop(); if (!AUTO) return;
+  const at = cur;
+  autoTimer = setTimeout(() => {
+    if (at !== cur) return;
+    const s = slides[cur];
+    if (s.dataset.list && audItems().some(li => !li.classList.contains('in') && !li.classList.contains('custom'))){ listNext(); broadcast(); return autoSchedule(AUTO_LIST_GAP); }
+    if (step < maxStep(s)){ show(cur, step + 1, {auto: true}); return; }
+  }, delay);
 }
 function next(skip){
   const s = slides[cur];
-  if (!skip && s.dataset.list && listNext()) return broadcast();
+  if (!skip && s.dataset.list && listNext()) { autoSchedule(AUTO_LIST_GAP); return broadcast(); }
   if (!skip && step < maxStep(s)) return show(cur, step + 1);
   if (cur < slides.length - 1) show(cur + 1, 0);
 }
 function prev(){
   const s = slides[cur];
-  if (step > 0) return show(cur, step - 1);
-  if (cur > 0) show(cur - 1, maxStep(slides[cur - 1]));
+  if (step > 0) return show(cur, step - 1, {back: true});
+  if (cur > 0) show(cur - 1, maxStep(slides[cur - 1]), {back: true});
 }
 function replay(){ const a = animFor(cur); if (a){ a.reset(); a.start(); } }
 
