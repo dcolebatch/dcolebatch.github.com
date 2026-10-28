@@ -6,7 +6,7 @@ const MODE = Q.has('print') ? 'print' : Q.has('presenter') ? 'presenter' : Q.has
 document.body.classList.add(MODE);
 const stage = document.getElementById('stage');
 const slides = [...document.querySelectorAll('.slide')];
-const chan = ('BroadcastChannel' in window) ? new BroadcastChannel('techgrit-tidal-deck') : null;
+const chan = ('BroadcastChannel' in window) ? new BroadcastChannel('techgrit-tidal-deck-v2') : null;
 let cur = 0, step = 0;
 const NS = 'http://www.w3.org/2000/svg';
 const svgEl = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
@@ -144,6 +144,18 @@ A('portfolio', s => {
   });
 });
 A('temm', s => { const g = s.querySelector('.spinr'); return timeline(3, t => { g.style.transform = `rotate(${t*240}deg)`; }); });
+/* Jittu update: light entrance + count-up for the new slides */
+function riseTL(s, dur){
+  const els = [...s.querySelectorAll('[data-rise]')];
+  return t => els.forEach((e, k) => { const p = Math.max(0, Math.min(1, (t - 0.15 - k*0.18)/0.5)); const ez = 1 - Math.pow(1 - p, 3); e.style.opacity = ez; e.style.transform = `translateY(${(1 - ez)*16}px)`; });
+}
+function countTL(s, t0, d){
+  const els = [...s.querySelectorAll('[data-count]')];
+  return t => els.forEach(e => { const p = Math.max(0, Math.min(1, (t - t0)/d)), ez = 1 - Math.pow(1 - p, 3), v = Math.round(+e.dataset.count*ez), f = e.dataset.fmt; e.textContent = f === '$B+' ? `$${v}B+` : `${v}%`; });
+}
+A('rise', s => { const r = riseTL(s); const g = s.querySelector('.spinr2'); return timeline(2.6, t => { r(t); if (g) g.style.transform = `rotate(${Math.min(t, 2.6)*240}deg)`; }); });
+A('stats', s => { const r = riseTL(s), c = countTL(s, 0.3, 1.4); return timeline(2.2, t => { r(t); c(t); }); });
+A('cheap', s => { const r = riseTL(s), c = countTL(s, 0.6, 1.3), w = s.querySelector('#w1'); return timeline(2.4, t => { r(t); c(t); const p = Math.max(0, Math.min(1, (t - 0.3)/1.0)); w.style.width = (32*(1 - Math.pow(1 - p, 3))) + '%'; }); });
 function combine(list){ return { dur: Math.max(...list.map(x => x.dur)), start(){ list.forEach(x => x.start()); }, stop(){ list.forEach(x => x.stop()); }, reset(){ list.forEach(x => x.reset()); }, finish(){ list.forEach(x => x.finish()); } }; }
 const built = new Map();
 function animFor(i){ const s = slides[i], n = s.dataset.anim; if (!n) return null; if (!built.has(i)) built.set(i, anims[n](s)); return built.get(i); }
